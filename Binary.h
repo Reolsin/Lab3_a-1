@@ -11,8 +11,8 @@ namespace Prog3a {
 	class Binary {
 	private:
 		static const int SZ = 15;
-		char* arr;
-		void NormolizeArr();
+		char* arr; //я бы сделал char arr[SZ], и в конструкторе проинициализировал и без функции SetDefaultArr()
+		void NormolizeArr(); //понял что функция чистит в начале нули, но пока не используется
 		void SetDefaultArr();
 	public:
 		Binary();
@@ -23,7 +23,7 @@ namespace Prog3a {
 
 		bool IsCorrectArr(const char* _digits);
 		~Binary() { delete[]arr; }
-		string GetBin() const { return string(arr); }
+		string GetBin() const { return string(arr); } // иногда для геттеров полезно использовать inline функции
 		string GetAdditionalCode() const;
 		Binary Add(const Binary& arg) const;
 		void SetBinaryWithAdditionalCode(const char* _arr);
