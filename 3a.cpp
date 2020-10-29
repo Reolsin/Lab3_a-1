@@ -1,4 +1,4 @@
-#include "Binary.h"
+#include "Binary.h" //случайно указано не то название файла
 #include <stdlib.h>
 #include <algorithm>
 #include <charconv>
@@ -23,7 +23,7 @@ namespace Prog3a {
 		return s;
 	}
 
-	void Binary::NormolizeArr()
+	void Binary::NormolizeArr() //странно что функция из private области нигде не используется
 	{
 
 			int j = 1;
@@ -61,7 +61,7 @@ namespace Prog3a {
 		SetDefaultArr();
 
 		char tmp[SZ - 1]{};
-		auto [ptr, _] = std::to_chars(tmp, tmp + SZ, std::abs(num), 2);
+		auto [ptr, _] = std::to_chars(tmp, tmp + SZ, std::abs(num), 2); //я бы реализовал без auto
 		
 		const auto size = ptr - tmp;
 		std::copy_n(tmp, size, arr + SZ - 1 - size);
@@ -99,11 +99,11 @@ namespace Prog3a {
 	{
 		SetDefaultArr();
 
-		std::copy(arr, arr + SZ, other.arr);
+		std::copy(arr, arr + SZ, other.arr); //использование std функций как раз в тех местах где это нужно 👍👍
 	}
 
 	Binary::Binary(Binary&& other) :
-		arr(std::move(other.arr))
+		arr(std::move(other.arr)) //👍👍
 	{
 		other.arr = nullptr;
 	}
@@ -133,7 +133,7 @@ namespace Prog3a {
 		return	s.str();
 	}
 
-	Binary Binary::Add(const Binary& arg)const
+	Binary Binary::Add(const Binary& arg)const //приятная и понятная функция 👍👍
 	{
 		auto a = GetAdditionalCode();
 		auto b = arg.GetAdditionalCode();
@@ -212,7 +212,7 @@ namespace Prog3a {
 		return *this;
 	}
 
-	Binary& Binary::incr() {
+	Binary& Binary::incr() {//я пишу такие функции c inline
 		return *this = Add(1);
 	}
 
